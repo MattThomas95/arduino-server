@@ -6,7 +6,7 @@ function App() {
   const [oldId, setOldId] = useState("");
   const [recentAmount, setRecent] = useState("");
   const [action, setAction] = useState("");
-  const options = { method: "GET" };
+  const options = { method: "GET", headers: { accept: "application/json" } };
 
   const [message, setMessage] = useState("");
   const [url, setUrl] = useState("");
@@ -22,7 +22,7 @@ function App() {
     if(message){
       const interval = setInterval(() => {
         console.log("This will run every 10 seconds!");
-        fetch("http://localhost:4200/api/v1/stats/101", options)
+        fetch(`https://shielded-bastion-43828.herokuapp.com/https://streamlabs.com/api/v1.0/donations?access_token=${message}`, options)
           .then((response) => response.json())
           .then((response) => {
             setResponse(response);
